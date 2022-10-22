@@ -13,12 +13,6 @@ echo "Would you Like To have Some Start ISOs/containers? Alpine, Ubuntu, Debian 
 read ISO
 echo  "Would you like to setup and configure samba shares? [Press Enter to skip]:"
 read samba
-if [[ -z $samba ]]; then
- echo
-else
- echo "where Should the Shares be stored? [Type Full path]"
- read sharel
-fi
 echo  "Would you like to have a OpenVpnserver? [Press Enter to skip]:"
 read vpn
 
@@ -82,7 +76,7 @@ else
  echo "!!!Dont Mis type. you Only Get One Chance!!!"
  smbpasswd -a $SMBuser
  smbpasswd -e $SMBuser
- Drive=$sharel
+ Drive="ZFS-Drive"
  numer=1
  number=0
  echo -n "how many shares would you like to add?: "
@@ -95,15 +89,15 @@ else
      sleep 1
      break
     else
-     mkdir -p /Data/$Share
+     mkdir -p /$Drive/$Share
      echo " " >> /etc/samba/smb.conf
      echo "[$Share]" >> /etc/samba/smb.conf
      echo "comment = $Share" >> /etc/samba/smb.conf
-     echo "path = /Data/$Share" >> /etc/samba/smb.conf
+     echo "path = /$Drive/$Share" >> /etc/samba/smb.conf
      echo "read only = no" >> /etc/samba/smb.conf
      echo "browsable = yes" >> /etc/samba/smb.conf
-     chown root:smbuser /Data/$Share
-     chmod -R 770 /Data/$Share
+     chown root:smbuser /$Drive/$Share
+     chmod -R 770 /$Drive/$Share
      let number++; let numer++
     fi
  done

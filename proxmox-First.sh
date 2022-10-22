@@ -82,7 +82,7 @@ else
  echo "!!!Dont Mis type. you Only Get One Chance!!!"
  smbpasswd -a $SMBuser
  smbpasswd -e $SMBuser
- Drive= $sharel
+ Drive=$sharel
  numer=1
  number=0
  echo -n "how many shares would you like to add?: "
@@ -95,15 +95,15 @@ else
      sleep 1
      break
     else
-     mkdir $Drive/$Share
+     mkdir -p /Data/$Share
      echo " " >> /etc/samba/smb.conf
      echo "[$Share]" >> /etc/samba/smb.conf
      echo "comment = $Share" >> /etc/samba/smb.conf
-     echo "path = $Drive/$Share" >> /etc/samba/smb.conf
+     echo "path = /Data/$Share" >> /etc/samba/smb.conf
      echo "read only = no" >> /etc/samba/smb.conf
      echo "browsable = yes" >> /etc/samba/smb.conf
-     chown root:smbuser $Drive/$Share
-     chmod -R 770 $Drive/$Share
+     chown root:smbuser /Data/$Share
+     chmod -R 770 /Data/$Share
      let number++; let numer++
     fi
  done

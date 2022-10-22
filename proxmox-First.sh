@@ -51,18 +51,17 @@ if [[ -z $ISO ]]; then
  echo "Skipping Getting ISOs"
 else 
  echo "Downlaoding Ubuntu Server ISO"
- wget -P /var/lib/vz/template/iso -o /dev/null --show-progress -q https://ubuntu.mirror.wearetriple.com/releases/20.04.4/ubuntu-20.04.4-live-server-amd64.iso
+ wget -P /var/lib/vz/template/iso -o /dev/null --show-progress -q https://ubuntu.mirror.wearetriple.com/releases/22.04.1/ubuntu-22.04.1-live-server-amd64.iso
  echo "Done"
-
+ echo
  echo "Downlaoding Alpine Container"
  wget -P /var/lib/vz/template/cache/ -o /dev/null --show-progress -q http://download.proxmox.com/images/system/alpine-3.9-default_20190224_amd64.tar.xz
  echo "Done"
  echo 
  echo "Downloading Ubuntu Container"
- wget -P /var/lib/vz/template/cache/ -o /dev/null --show-progress -q http://download.proxmox.com/images/system/ubuntu-21.10-standard_21.10-1_amd64.tar.zst
+ wget -P /var/lib/vz/template/cache/ -o /dev/null --show-progress -q http://download.proxmox.com/images/system/ubuntu-22.10-standard_22.10-1_amd64.tar.zst
  echo "Done"
  echo 
- echo  "Would you like to setup and configure samba shares? [Press Enter to skip]"
  echo "Downloading Debain Container"
  wget -P /var/lib/vz/template/cache/ -o /dev/null --show-progress -q http://download.proxmox.com/images/system/debian-11-standard_11.3-1_amd64.tar.zst
  echo "Done"

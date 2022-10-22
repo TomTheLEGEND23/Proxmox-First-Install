@@ -13,6 +13,12 @@ echo "Would you Like To have Some Start ISOs/containers? Alpine, Ubuntu, Debian 
 read ISO
 echo  "Would you like to setup and configure samba shares? [Press Enter to skip]:"
 read samba
+if [[ -z $samba ]]; then
+ echo
+else
+ echo "where Should the Shares be stored? [Type Full path]"
+ read sharel
+fi
 echo  "Would you like to have a OpenVpnserver? [Press Enter to skip]:"
 read vpn
 
@@ -76,7 +82,7 @@ else
  echo "!!!Dont Mis type. you Only Get One Chance!!!"
  smbpasswd -a $SMBuser
  smbpasswd -e $SMBuser
- Drive="ZFS-Drive"
+ Drive= $sharel
  numer=1
  number=0
  echo -n "how many shares would you like to add?: "

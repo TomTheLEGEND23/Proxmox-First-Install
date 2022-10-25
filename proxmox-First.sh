@@ -16,7 +16,7 @@ read samba
 if [[ -z $samba ]]; then
  echo
 else
- echo "where Should the Shares be stored? [Type Full path]"
+ echo "where Should the Shares be stored? [Type Name]"
  read sharel
 fi
 echo  "Would you like to have a OpenVpnserver? [Press Enter to skip]:"
